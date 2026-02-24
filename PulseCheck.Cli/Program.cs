@@ -1,4 +1,5 @@
-using PulseCheck.App;
+﻿using PulseCheck.Core.Platform;
+using PulseCheck.Core.Services;
 
 var runner = new BashCommandRunner();
 var parser = new BashCommandOutputParser();

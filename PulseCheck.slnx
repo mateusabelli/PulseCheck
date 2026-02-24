@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="PulseCheck.App/PulseCheck.App.csproj" />
+  <Project Path="PulseCheck.Cli/PulseCheck.Cli.csproj" />
+  <Project Path="PulseCheck.Core/PulseCheck.Core.csproj" />
 </Solution>
