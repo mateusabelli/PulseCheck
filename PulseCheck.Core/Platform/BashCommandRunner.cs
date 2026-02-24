@@ -20,6 +20,6 @@ public class BashCommandRunner(string? interpreter = "/bin/bash") : ICommandRunn
 
         process.WaitForExit();
 
-        return process.StandardOutput.ReadToEnd();
+        return process.StandardOutput.ReadToEnd().Trim();
     }
 }
