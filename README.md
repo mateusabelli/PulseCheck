@@ -12,7 +12,7 @@ Tiny experiment of a desktop app that monitors computer resource usage
 - [x] Project Setup: Initialize git, choose a license, and set up the directory structure.
 - [x] Data Models: Define a ResourceSnapshot object to hold CPU/RAM data.
 - [x] The "Monitor" Engine: - Write logic to fetch system stats.
-- [ ] Unit Test: Mock the system calls to ensure the engine handles "fake" data correctly.
+- [x] Unit Test: Mock the system calls to ensure the engine handles "fake" data correctly.
 - [ ] Alert Logic: - Create a function that determines status (Healthy vs. Critical) based on thresholds.
 - [ ] Unit Test: Validate that Usage>Threshold consistently triggers the correct state.
 
