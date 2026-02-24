@@ -1,4 +1,4 @@
-namespace PulseCheck.App;
+namespace PulseCheck.Core.Domain;
 
 public record ResourceSnapshot(
     float CpuUsagePercent,

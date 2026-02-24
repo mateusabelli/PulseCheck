@@ -1,8 +1,9 @@
 using System.Diagnostics;
+using PulseCheck.Core.Abstractions;
 
-namespace PulseCheck.App;
+namespace PulseCheck.Core.Platform;
 
-internal class BashCommandRunner(string? interpreter = "/bin/bash") : ICommandRunner
+public class BashCommandRunner(string? interpreter = "/bin/bash") : ICommandRunner
 {
     public string Run(string command)
     {

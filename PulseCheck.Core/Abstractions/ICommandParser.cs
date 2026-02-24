@@ -1,4 +1,4 @@
-namespace PulseCheck.App;
+namespace PulseCheck.Core.Abstractions;
 
 public interface ICommandParser
 {

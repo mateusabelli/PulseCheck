@@ -1,4 +1,7 @@
-﻿namespace PulseCheck.App;
+﻿using PulseCheck.Core.Abstractions;
+using PulseCheck.Core.Domain;
+
+namespace PulseCheck.Core.Services;
 
 public class ResourceReader(ICommandRunner runner, ICommandParser parser)
 {

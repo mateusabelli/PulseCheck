@@ -1,6 +1,8 @@
-namespace PulseCheck.App;
+using PulseCheck.Core.Abstractions;
 
-internal class BashCommandOutputParser : ICommandParser
+namespace PulseCheck.Core.Platform;
+
+public class BashCommandOutputParser : ICommandParser
 {
     public float ParseCpuUsagePercent(string stdout)
     {
