@@ -1,12 +1,14 @@
+using System.Globalization;
 using PulseCheck.Core.Abstractions;
 
 namespace PulseCheck.Core.Platform;
 
-public class BashCommandOutputParser : ICommandParser
+public class BashOutputParser : ICommandParser
 {
     public float ParseCpuUsagePercent(string stdout)
     {
-        var canParseResult = float.TryParse(stdout, out var result);
+        var canParseResult = float.TryParse(stdout.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture,
+            out var result);
         if (!canParseResult)
             throw new InvalidOperationException($"Could not parse CPU usage from command output {stdout}");
 
@@ -17,6 +19,9 @@ public class BashCommandOutputParser : ICommandParser
     public float ParseMemoryUsagePercent(string stdout)
     {
         var stdoutArray = stdout.Split(" ");
+
+        if (stdoutArray.Length != 2)
+            throw new InvalidOperationException($"Could not parse values from command output {stdout}");
 
         var canParseTotalMemory = int.TryParse(stdoutArray[0], out var totalResult);
         if (!canParseTotalMemory)

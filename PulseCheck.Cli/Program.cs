@@ -2,7 +2,7 @@
 using PulseCheck.Core.Services;
 
 var runner = new BashCommandRunner();
-var parser = new BashCommandOutputParser();
+var parser = new BashOutputParser();
 
 var resourceReader = new ResourceReader(runner, parser);
 
