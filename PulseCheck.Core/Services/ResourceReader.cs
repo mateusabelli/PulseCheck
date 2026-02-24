@@ -7,7 +7,7 @@ public class ResourceReader(ICommandRunner runner, ICommandParser parser)
 {
     public ResourceSnapshot ReadUsagePercent()
     {
-        return new ResourceSnapshot(MemoryUsagePercent(), CpuUsagePercent());
+        return new ResourceSnapshot(CpuUsagePercent(), MemoryUsagePercent());
     }
 
     private float MemoryUsagePercent()
