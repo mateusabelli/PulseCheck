@@ -2,7 +2,7 @@
 using PulseCheck.Core.Abstractions;
 using PulseCheck.Core.Services;
 
-namespace PulseCheck.Core.Tests;
+namespace PulseCheck.Core.Tests.Services;
 
 public class ResourceReaderTests
 {

@@ -1,6 +1,6 @@
 using PulseCheck.Core.Platform;
 
-namespace PulseCheck.Core.Tests;
+namespace PulseCheck.Core.Tests.Platform;
 
 public class BashCommandRunnerTests
 {
