@@ -1,7 +1,11 @@
 using PulseCheck.App;
 
-var cpuUsage = ResourceMonitor.GetCpuUsage();
-var memoryUsage = ResourceMonitor.GetMemoryUsage();
+var runner = new BashCommandRunner();
+var parser = new BashCommandOutputParser();
+
+var resourceReader = new ResourceReader(runner, parser);
+
+var (cpuUsage, memoryUsage) = resourceReader.ReadUsagePercent();
 
 Console.WriteLine("In use system resources");
 Console.WriteLine($"CPU: {cpuUsage}%");
