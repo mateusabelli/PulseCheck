@@ -2,6 +2,8 @@
 
 Tiny experiment of a desktop app that monitors computer resource usage
 
+[![PulseCheck CI](https://github.com/mateusabelli/PulseCheck/actions/workflows/ci.yml/badge.svg)](https://github.com/mateusabelli/PulseCheck/actions/workflows/ci.yml)
+
 > [!IMPORTANT]
 > Work in progress...
 
@@ -18,10 +20,10 @@ Tiny experiment of a desktop app that monitors computer resource usage
 
 ### Phase 2: CI/CD Integration
 
-- [ ] GitHub Actions Setup: Create .github/workflows/test.yml.
-- [ ] Automated Testing: Ensure every git push triggers the unit test suite.
+- [x] GitHub Actions Setup: Create .github/workflows/test.yml.
+- [x] Automated Testing: Ensure every git push triggers the unit test suite.
 - [ ] Linting: Add a step to check for code formatting.
-- [ ] Badge: Add a "Build Passing" badge to the README.md.
+- [x] Badge: Add a "Build Passing" badge to the README.md.
 
 ### Phase 3: Desktop UI Development
 
