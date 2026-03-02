@@ -13,8 +13,8 @@ Tiny experiment of a desktop app that monitors computer resource usage
 - [x] Data Models: Define a ResourceSnapshot object to hold CPU/RAM data.
 - [x] The "Monitor" Engine: - Write logic to fetch system stats.
 - [x] Unit Test: Mock the system calls to ensure the engine handles "fake" data correctly.
-- [ ] Alert Logic: - Create a function that determines status (Healthy vs. Critical) based on thresholds.
-- [ ] Unit Test: Validate that Usage>Threshold consistently triggers the correct state.
+- [x] Alert Logic: - Create a function that determines status (Healthy vs. Critical) based on thresholds.
+- [x] Unit Test: Validate that Usage>Threshold consistently triggers the correct state.
 
 ### Phase 2: CI/CD Integration
 
@@ -42,3 +42,4 @@ Tiny experiment of a desktop app that monitors computer resource usage
 - [ ] Dark Mode: Support system-wide theme switching.
 - [ ] History Graph: Use a charting library to show usage over the last 60 seconds.
 - [ ] Performance Optimization: Ensure the app uses <1% of the CPU it is actually monitoring.
+- [ ] Extract the Platform code from Core logic to add Windows support.
