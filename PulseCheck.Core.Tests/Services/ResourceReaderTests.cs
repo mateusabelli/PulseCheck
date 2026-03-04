@@ -1,4 +1,5 @@
 ﻿using Moq;
+
 using PulseCheck.Core.Abstractions;
 using PulseCheck.Core.Services;
 

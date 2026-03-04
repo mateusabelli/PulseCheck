@@ -1,4 +1,5 @@
 using System.Diagnostics;
+
 using PulseCheck.Core.Abstractions;
 
 namespace PulseCheck.Core.Platform;

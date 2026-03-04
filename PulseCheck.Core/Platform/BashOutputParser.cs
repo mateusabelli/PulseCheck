@@ -1,4 +1,5 @@
 using System.Globalization;
+
 using PulseCheck.Core.Abstractions;
 
 namespace PulseCheck.Core.Platform;
