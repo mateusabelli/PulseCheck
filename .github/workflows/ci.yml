@@ -21,6 +21,9 @@ jobs:
 
     - name: Restore Dependencies
       run: dotnet restore PulseCheck.slnx
+      
+    - name: Linting
+      run: dotnet format PulseCheck.slnx --verify-no-changes
 
     - name: Build Solution
       run: dotnet build PulseCheck.slnx --no-restore
