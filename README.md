@@ -27,7 +27,7 @@ Tiny experiment of a desktop app that monitors computer resource usage
 
 ### Phase 3: Desktop UI Development
 
-- [ ] Basic Layout: Create a simple window showing two progress bars (CPU/RAM).
+- [x] Basic Layout: Create a simple window showing two progress bars (CPU/RAM).
 - [ ] The "Visual Alert" System: Implement a UI change (e.g., background turns red) when the Logic Engine signals a "
   Critical" state.
 - [ ] User Settings: Allow users to set their own threshold (e.g., notify at 80% vs 90%).
