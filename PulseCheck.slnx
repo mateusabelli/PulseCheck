@@ -2,4 +2,5 @@
   <Project Path="PulseCheck.Cli/PulseCheck.Cli.csproj" />
   <Project Path="PulseCheck.Core.Tests/PulseCheck.Core.Tests.csproj" />
   <Project Path="PulseCheck.Core/PulseCheck.Core.csproj" />
+  <Project Path="PulseCheck.GNOME/PulseCheck.GNOME.csproj" />
 </Solution>
