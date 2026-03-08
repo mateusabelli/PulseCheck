@@ -9,6 +9,8 @@
 
     <ItemGroup>
       <PackageReference Include="GirCore.Adw-1" Version="0.7.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.3" />
     </ItemGroup>
 
     <ItemGroup>

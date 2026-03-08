@@ -1,19 +1,24 @@
 using Gtk;
 
+using PulseCheck.Core.Abstractions;
 using PulseCheck.Core.Domain;
-using PulseCheck.Core.Platform;
 using PulseCheck.Core.Services;
 
 namespace PulseCheck.GNOME;
 
 public class MainWindow : Adw.ApplicationWindow
 {
+    private readonly StabilityThresholds _thresholds;
+    private readonly ResourceReader _resourceReader;
+
     private readonly ProgressBar _cpuBar;
     private readonly ProgressBar _ramBar;
-    private readonly uint _timeoutId;
 
-    public MainWindow(Adw.Application app)
+    public MainWindow(Adw.Application app, ICommandRunner runner, ICommandParser parser)
     {
+        _thresholds = new StabilityThresholds(85.0f, 95.0f);
+        _resourceReader = new ResourceReader(runner, parser);
+
         Application = app;
         Title = "PulseCheck";
         SetDefaultSize(500, 500);
@@ -40,7 +45,7 @@ public class MainWindow : Adw.ApplicationWindow
 
         rootBox.Append(verticalBox);
 
-        _timeoutId = GLib.Functions.TimeoutAdd(0, 1000, () =>
+        uint timeoutId = GLib.Functions.TimeoutAdd(0, 1000, () =>
         {
             UpdateStats();
             return true;
@@ -48,7 +53,7 @@ public class MainWindow : Adw.ApplicationWindow
 
         OnCloseRequest += (s, args) =>
         {
-            GLib.Functions.SourceRemove(_timeoutId);
+            GLib.Functions.SourceRemove(timeoutId);
             return false;
         };
 
@@ -57,14 +62,8 @@ public class MainWindow : Adw.ApplicationWindow
 
     private void UpdateStats()
     {
-        var runner = new BashCommandRunner();
-        var parser = new BashOutputParser();
-        var thresholds = new StabilityThresholds(85.0f, 95.0f);
-
-        var resourceReader = new ResourceReader(runner, parser);
-
-        var snapshot = resourceReader.ReadUsagePercent();
-        var stability = SystemStabilityReader.GetCurrentState(snapshot, thresholds);
+        var snapshot = _resourceReader.ReadUsagePercent();
+        var stability = SystemStabilityReader.GetCurrentState(snapshot, _thresholds);
 
         var cpuValue = snapshot.CpuUsagePercent;
         var ramValue = snapshot.MemoryUsagePercent;

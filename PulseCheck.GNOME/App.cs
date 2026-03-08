@@ -1,8 +1,10 @@
 using Gio;
 
+using PulseCheck.Core.Abstractions;
+
 namespace PulseCheck.GNOME;
 
-public class App
+public class App(ICommandRunner runner, ICommandParser parser)
 {
     public void Run(string[] args)
     {
@@ -10,7 +12,7 @@ public class App
 
         app.OnActivate += (sender, args) =>
         {
-            var window = new MainWindow(app);
+            var window = new MainWindow(app, runner, parser);
             window.Show();
         };
 
