@@ -1,17 +1,17 @@
-﻿using PulseCheck.Core.Domain;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+using PulseCheck.Cli;
+using PulseCheck.Core.Abstractions;
 using PulseCheck.Core.Platform;
-using PulseCheck.Core.Services;
 
-var runner = new BashCommandRunner();
-var parser = new BashOutputParser();
-var thresholds = new StabilityThresholds(85.0f, 95.0f);
+var builder = new HostApplicationBuilder();
+builder.Services.AddSingleton<ICommandRunner, BashCommandRunner>();
+builder.Services.AddSingleton<ICommandParser, BashOutputParser>();
 
-var resourceReader = new ResourceReader(runner, parser);
+builder.Services.AddTransient<App>();
 
-var snapshot = resourceReader.ReadUsagePercent();
-var stability = SystemStabilityReader.GetCurrentState(snapshot, thresholds);
+var host = builder.Build();
+var app = host.Services.GetRequiredService<App>();
 
-Console.WriteLine("In use system resources");
-Console.WriteLine($"CPU: {snapshot.CpuUsagePercent}%");
-Console.WriteLine($"MEM: {snapshot.MemoryUsagePercent}%");
-Console.WriteLine($"The system is {stability}");
+app.Run();
