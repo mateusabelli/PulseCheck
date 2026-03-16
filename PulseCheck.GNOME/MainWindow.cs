@@ -19,45 +19,23 @@ public class MainWindow : Adw.ApplicationWindow
         _thresholds = new StabilityThresholds(85.0f, 95.0f);
         _resourceReader = new ResourceReader(runner, parser);
 
+        var builder = Builder.NewFromFile("MainWindow.ui");
+
+        _cpuBar = (ProgressBar)builder.GetObject("cpu_bar")!;
+        _ramBar = (ProgressBar)builder.GetObject("ram_bar")!;
+        var rootBox = (Box)builder.GetObject("root_box")!;
+
         Application = app;
         Title = "PulseCheck";
         SetDefaultSize(500, 500);
 
-        var rootBox = Box.New(Orientation.Vertical, 0);
-        var headerBar = Adw.HeaderBar.New();
-        rootBox.Append(headerBar);
+        SetContent(rootBox);
 
-        var verticalBox = Box.New(Orientation.Vertical, 16);
-        verticalBox.SetMarginStart(24);
-        verticalBox.SetMarginEnd(24);
-        verticalBox.SetMarginTop(24);
-        verticalBox.SetMarginBottom(24);
-
-        verticalBox.Append(Label.New("CPU Usage"));
-        _cpuBar = ProgressBar.New();
-        _cpuBar.SetShowText(true);
-        verticalBox.Append(_cpuBar);
-
-        verticalBox.Append(Label.New("RAM Usage"));
-        _ramBar = ProgressBar.New();
-        _ramBar.SetShowText(true);
-        verticalBox.Append(_ramBar);
-
-        rootBox.Append(verticalBox);
-
-        uint timeoutId = GLib.Functions.TimeoutAdd(0, 1000, () =>
+        GLib.Functions.TimeoutAdd(0, 1000, () =>
         {
             UpdateStats();
             return true;
         });
-
-        OnCloseRequest += (s, args) =>
-        {
-            GLib.Functions.SourceRemove(timeoutId);
-            return false;
-        };
-
-        Content = rootBox;
     }
 
     private void UpdateStats()

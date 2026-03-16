@@ -17,4 +17,10 @@
       <ProjectReference Include="..\PulseCheck.Core\PulseCheck.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="MainWindow.ui">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
