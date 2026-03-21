@@ -14,6 +14,8 @@ public class MainWindow : Adw.ApplicationWindow
     private readonly ProgressBar _cpuBar;
     private readonly ProgressBar _ramBar;
 
+    private readonly Label _stabilityLabel;
+
     public MainWindow(Adw.Application app, ICommandRunner runner, ICommandParser parser)
     {
         _thresholds = new StabilityThresholds(85.0f, 95.0f);
@@ -23,6 +25,8 @@ public class MainWindow : Adw.ApplicationWindow
 
         _cpuBar = (ProgressBar)builder.GetObject("cpu_bar")!;
         _ramBar = (ProgressBar)builder.GetObject("ram_bar")!;
+        _stabilityLabel = (Label)builder.GetObject("stability_label")!;
+
         var rootBox = (Box)builder.GetObject("root_box")!;
 
         Application = app;
@@ -51,5 +55,7 @@ public class MainWindow : Adw.ApplicationWindow
 
         _ramBar.SetFraction(ramValue / 100);
         _ramBar.SetText($"{ramValue}%");
+
+        _stabilityLabel.SetText(stability.ToString());
     }
 }
